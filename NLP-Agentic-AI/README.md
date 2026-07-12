@@ -1,92 +1,91 @@
 # 🧠 NLP-Based Agentic AI System
 
-An intelligent NLP-powered Agentic AI system capable of autonomously analyzing text, selecting appropriate actions, and generating meaningful outputs through sentiment analysis and text summarization.
+An Agentic AI system that analyzes Amazon customer reviews using Natural Language Processing (NLP). The agent autonomously decides which actions to perform, including sentiment analysis and text summarization, based on the content of the review.
 
 ---
 
 ## 📖 Overview
 
-This project explores the concept of Agentic Artificial Intelligence by combining Natural Language Processing (NLP) techniques with autonomous decision-making capabilities.
+This project implements an NLP-based Agentic AI architecture using Amazon customer reviews as input data.
 
-Unlike traditional NLP pipelines that follow predefined workflows, this system evaluates incoming text, determines which actions are required, and executes those actions automatically.
+The system combines pre-trained Transformer models from Hugging Face with an agent framework consisting of four key components:
 
-The agent is capable of:
+- Perception
+- Planning
+- Action
+- Memory
 
-- Understanding user input
-- Analyzing sentiment
-- Summarizing lengthy reviews
-- Making decisions about which NLP tools to use
-- Storing results in memory
+Instead of following a fixed workflow, the agent examines the input review and determines which NLP tools should be executed. Depending on the review content, the agent may perform sentiment analysis, text summarization, or both.
 
-The project uses Amazon customer reviews as a dataset and leverages pre-trained Transformer models from Hugging Face.
+The project demonstrates how autonomous decision-making can be integrated with NLP pipelines to create intelligent systems capable of selecting their own actions.
 
 ---
 
 ## 🎯 Objectives
 
-The main objectives of this project are:
+The goals of this project are:
 
-- Demonstrate Agentic AI principles.
-- Implement autonomous decision-making.
+- Implement an Agentic AI architecture.
 - Perform sentiment analysis using Transformer models.
-- Generate concise summaries of lengthy reviews.
-- Build an architecture consisting of Perception, Planning, Memory, and Action components.
+- Generate summaries for lengthy reviews.
+- Demonstrate autonomous task selection.
+- Evaluate NLP model performance using standard metrics.
 
 ---
 
 ## 🤖 What is Agentic AI?
 
-Agentic AI refers to systems that can independently decide how to solve a problem rather than following a fixed sequence of instructions.
+Agentic AI refers to systems capable of making decisions about how to solve a problem instead of following a rigid sequence of instructions.
 
-An Agentic AI system typically consists of:
+The agent implemented in this project consists of four components:
 
 ### 👀 Perception
 
-Receives and interprets information from the environment.
+Receives and processes incoming information.
 
 ### 🧠 Planning
 
-Determines what actions need to be performed.
-
-### 💾 Memory
-
-Stores previous results and information.
+Determines which NLP actions are required.
 
 ### ⚡ Action
 
-Executes tasks using available tools.
+Executes the selected NLP tools.
+
+### 💾 Memory
+
+Stores generated outputs for future reference.
 
 ---
 
 ## 🏗️ System Architecture
 
 ```text
-                 User Input
-                      │
-                      ▼
-                Perception
-                      │
-                      ▼
-                  Planning
-                      │
-          ┌───────────┴───────────┐
-          │                       │
-          ▼                       ▼
-  Sentiment Analysis      Text Summarization
-          │                       │
-          └───────────┬───────────┘
-                      ▼
-                    Memory
-                      │
-                      ▼
-                 Final Output
+                 Amazon Review
+                       │
+                       ▼
+                  Perception
+                       │
+                       ▼
+                    Planning
+                       │
+           ┌───────────┴───────────┐
+           │                       │
+           ▼                       ▼
+    Sentiment Analysis     Text Summarization
+           │                       │
+           └───────────┬───────────┘
+                       ▼
+                     Memory
+                       │
+                       ▼
+                  Final Output
 ```
 
 ---
 
 ## ⚙️ How It Works
 
-### Step 1: Data Loading
+### Step 1: Load Dataset
 
 The system loads Amazon customer reviews from a CSV dataset.
 
@@ -95,27 +94,33 @@ The dataset contains:
 - Review Text
 - Product Ratings
 
----
-
-### Step 2: Review Processing
-
-Customer reviews are extracted and prepared for NLP analysis.
-
 Ratings are converted into sentiment labels:
 
 ```text
-4-5 Stars → Positive
-
-3 Stars → Neutral
-
-1-2 Stars → Negative
+4–5 Stars → Positive
+3 Stars   → Neutral
+1–2 Stars → Negative
 ```
+
+---
+
+### Step 2: Load NLP Models
+
+The project uses two Hugging Face Transformer pipelines:
+
+#### Sentiment Analysis Model
+
+Used to identify whether a review expresses positive or negative sentiment.
+
+#### Summarization Model
+
+Used to generate concise summaries of lengthy customer reviews.
 
 ---
 
 ### Step 3: Agent Perception
 
-The agent receives a review and analyzes its content.
+The Perception module receives a review and prepares it for analysis.
 
 Example:
 
@@ -127,83 +132,70 @@ This product is amazing. The battery life is excellent and performance is outsta
 
 ### Step 4: Agent Planning
 
-The Planning Module determines which actions should be performed.
+The Planning module decides which actions should be executed.
 
-Rules used:
+Rules used by the agent:
 
-- Long reviews → Summarization
-- Opinion-based reviews → Sentiment Analysis
-- Complex reviews → Both tasks
-
-The agent decides this automatically.
+- Reviews longer than 15 words → Summarization
+- Reviews containing opinion-based terms such as good, bad, great, or poor → Sentiment Analysis
+- Reviews meeting both conditions → Both tasks
 
 ---
 
-### Step 5: Sentiment Analysis
+### Step 5: Agent Action
 
-The sentiment analysis model identifies the emotional tone of the review.
+The selected NLP tools are executed.
 
-Possible outputs:
-
-```text
-POSITIVE
-
-NEGATIVE
-```
+#### Sentiment Analysis
 
 Example:
 
 ```text
 Review:
-The product exceeded my expectations.
+This product exceeded my expectations.
 
 Output:
 POSITIVE
 ```
 
----
-
-### Step 6: Text Summarization
-
-Long reviews are compressed into concise summaries.
+#### Text Summarization
 
 Example:
 
 ```text
-Original Review:
-The product arrived quickly...
-[Long Review]
+Review:
+The product arrived quickly and worked perfectly. The battery lasted all day and the overall build quality was excellent.
 
 Summary:
-Fast delivery and excellent product quality.
+Excellent product with strong battery life and build quality.
 ```
 
 ---
 
-### Step 7: Memory Storage
+### Step 6: Memory Storage
 
-The generated outputs are stored in memory.
+The generated results are stored inside the agent's memory component.
 
-Stored information includes:
+Stored outputs may include:
 
-- Sentiment Result
-- Generated Summary
+- Sentiment Results
+- Generated Summaries
 
-This allows the system to maintain awareness of previous actions.
+This allows the agent to retain information about previous actions.
 
 ---
 
-### Step 8: Final Response
+### Step 7: Final Output
 
-The results are returned to the user.
+The agent returns the generated results.
 
 Example:
 
 ```text
-Sentiment: Positive
-
-Summary:
-Excellent product quality with strong performance and battery life.
+{
+  'sentiment': 'POSITIVE',
+  'summary': 'Excellent product with strong battery life and build quality.'
+}
 ```
 
 ---
@@ -211,13 +203,13 @@ Excellent product quality with strong performance and battery life.
 ## ✨ Features
 
 - Agentic AI Architecture
-- Autonomous Decision Making
+- Autonomous Task Selection
 - Sentiment Analysis
 - Text Summarization
-- Memory Component
-- Dynamic Task Selection
 - Transformer-Based NLP
-- Customer Review Analysis
+- Memory Component
+- Amazon Review Analysis
+- Dynamic Decision Making
 
 ---
 
@@ -227,7 +219,7 @@ Excellent product quality with strong performance and battery life.
 
 - Python
 
-### Libraries & Frameworks
+### Libraries
 
 - Transformers
 - PyTorch
@@ -244,7 +236,13 @@ Excellent product quality with strong performance and battery life.
 
 ## 📂 Dataset
 
-This project uses an Amazon Reviews dataset containing:
+The project uses:
+
+```text
+amazon_reviews.csv
+```
+
+Important columns:
 
 ```text
 reviewText
@@ -254,14 +252,14 @@ overall
 The dataset is used for:
 
 - Sentiment Classification
-- Text Summarization
+- Review Summarization
 - Agent Evaluation
 
 ---
 
-## 📊 Evaluation
+## 📊 Model Evaluation
 
-The sentiment analysis component is evaluated using:
+The sentiment analysis model is evaluated using:
 
 ### Accuracy
 
@@ -269,13 +267,13 @@ Measures overall prediction correctness.
 
 ### F1 Score
 
-Measures balance between precision and recall.
+Measures the balance between precision and recall.
 
-These metrics provide insight into the model's performance on customer reviews.
+Evaluation is performed on a subset of Amazon reviews to assess model performance.
 
 ---
 
-## 💬 Example Output
+## 💬 Sample Output
 
 ### Sentiment Analysis
 
@@ -291,48 +289,46 @@ POSITIVE
 
 ```text
 Review:
-[Long Customer Review]
+The product arrived quickly and worked flawlessly. Battery life exceeded expectations and overall quality was excellent.
 
 Summary:
-Excellent product with reliable performance.
+Excellent product with reliable performance and battery life.
 ```
 
-### Combined Agent Output
+### Agent Output
 
 ```text
-Sentiment:
-POSITIVE
-
-Summary:
-Excellent quality product with strong performance.
+{
+  'sentiment': 'POSITIVE',
+  'summary': 'Excellent product with reliable performance and battery life.'
+}
 ```
 
 ---
 
-## 🌍 Real-World Applications
+## 🌍 Applications
 
-This system can be used for:
+This project can be applied to:
 
 - Customer Feedback Analysis
 - Review Mining
 - Market Research
 - E-Commerce Platforms
-- Customer Support Systems
-- Intelligent Virtual Assistants
+- Opinion Analysis
+- Intelligent Review Systems
 
 ---
 
-## 📈 Future Improvements
+## 🚀 Future Improvements
 
-Potential enhancements include:
+Potential future enhancements include:
 
-- Multi-Agent Systems
+- Multi-Agent Architectures
 - Retrieval-Augmented Generation (RAG)
-- Long-Term Memory
-- Tool-Augmented Agents
+- Long-Term Memory Systems
 - Real-Time User Interaction
 - Web-Based Interface
-- Multi-Modal Inputs
+- Tool-Augmented Agents
 
 ---
 
@@ -340,17 +336,15 @@ Potential enhancements include:
 
 Add screenshots showing:
 
-### Review Analysis
+### Dataset Loading
 
-![Review Analysis](screenshots/review-analysis.png)
+### Agent Output
 
-### Sentiment Detection
+### Sentiment Analysis Results
 
-![Sentiment Analysis](screenshots/sentiment-analysis.png)
+### Text Summarization Results
 
-### Generated Summary
-
-![Summary](screenshots/summary.png)
+### Evaluation Metrics
 
 ---
 
@@ -360,4 +354,4 @@ Add screenshots showing:
 
 AI & Machine Learning Enthusiast
 
-Interested in Agentic AI, NLP, Machine Learning, Deep Learning, and Intelligent Systems.
+Interested in Agentic AI, NLP, Deep Learning, Generative AI, and Intelligent Systems.
