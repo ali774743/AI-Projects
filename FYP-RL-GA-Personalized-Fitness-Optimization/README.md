@@ -75,7 +75,8 @@ FYP-RL-GA-Personalized-Fitness-Optimization/
 ├── FYP_RL_GA.ipynb
 ├── fyp_rl_ga.py
 ├── METHODOLOGY.md
-├── .gitkeep   (results)
+├── Results
+    └── Images
 ```
 
 ## Setup
