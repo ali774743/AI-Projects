@@ -72,10 +72,7 @@ The public notebook intentionally omits key implementation details. Method descr
 ```text
 FITGENIX/
 ├── README.md
-├── requirements.txt
-├── .gitignore
-├── FYP_RL_GA_GitHub_Partial_Code.ipynb
-├── docs/
+├── FYP_RL_GA.ipynb
 │   └── METHODOLOGY.md
 └── results/
     └── .gitkeep
