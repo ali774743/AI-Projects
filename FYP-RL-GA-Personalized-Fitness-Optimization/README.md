@@ -73,9 +73,9 @@ The public notebook intentionally omits key implementation details. Method descr
 FYP-RL-GA-Personalized-Fitness-Optimization/
 ├── README.md
 ├── FYP_RL_GA.ipynb
-│   └── METHODOLOGY.md
-└── results/
-    └── .gitkeep
+├── fyp_rl_ga.py
+├── METHODOLOGY.md
+├── .gitkeep   (results)
 ```
 
 ## Setup
