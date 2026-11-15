@@ -70,7 +70,7 @@ The public notebook intentionally omits key implementation details. Method descr
 ## Repository contents
 
 ```text
-FITGENIX/
+FYP-RL-GA-Personalized-Fitness-Optimization/
 ├── README.md
 ├── FYP_RL_GA.ipynb
 │   └── METHODOLOGY.md
