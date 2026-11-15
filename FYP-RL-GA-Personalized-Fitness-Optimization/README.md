@@ -123,8 +123,8 @@ Add only verified project outputs here, such as evaluation tables, plots, or scr
 ## Author
 
 **Ali Raza**  
-GitHub: [Add your GitHub profile URL]  
-LinkedIn: [Add your LinkedIn profile URL]
+GitHub: https://github.com/ali774743
+LinkedIn: https://www.linkedin.com/in/aliraza-tech01/
 
 ---
 
